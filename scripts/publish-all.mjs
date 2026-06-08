@@ -1,5 +1,5 @@
 /**
- * Publish all @opubase/opicon packages to npm.
+ * Publish all @opudoc/opicon packages to npm.
  *
  * Mit Passkey-only 2FA: Granular Access Token nutzen (kein OTP).
  *   npm config set //registry.npmjs.org/:_authToken DEIN_TOKEN
@@ -37,6 +37,9 @@ try {
 console.log(`npm user: ${whoami}`);
 console.log('Publish ohne OTP (Granular Access Token / Passkey-Setup)\n');
 
+console.log('Building monorepo (icons + packages)...\n');
+execSync('npx pnpm build', { cwd: ROOT, stdio: 'inherit' });
+
 for (const pkg of packages) {
   console.log(`Publishing ${pkg}...`);
   execSync('npx pnpm publish --access public --no-git-checks', {
@@ -45,4 +48,4 @@ for (const pkg of packages) {
   });
 }
 
-console.log('\nAlle @opubase/opicon Packages veröffentlicht.');
+console.log('\nAlle @opudoc/opicon Packages veröffentlicht.');

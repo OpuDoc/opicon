@@ -1,6 +1,6 @@
 import { createElement } from 'react';
 import Svg, { Circle, ClipPath, Defs, G, Line, Path, Polygon, Polyline, Rect } from 'react-native-svg';
-import { mergeClasses } from '@opubase/opicon-shared';
+import { mergeClasses } from '@opudoc/opicon-shared';
 import type { IconNode, OpiconProps } from './types';
 
 const TAG_MAP: Record<string, React.ComponentType<Record<string, unknown>>> = {

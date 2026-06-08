@@ -1,5 +1,5 @@
 import { h, type VNode } from 'preact';
-import { hasA11yProp, mergeClasses } from '@opubase/opicon-shared';
+import { hasA11yProp, mergeClasses } from '@opudoc/opicon-shared';
 import defaultAttributes from './defaultAttributes';
 import type { IconNode, OpiconProps } from './types';
 

@@ -17,7 +17,7 @@ const createIcons = ({
 }: CreateIconsOptions = {}): void => {
   if (!Object.values(iconsMap).length) {
     throw new Error(
-      'Please provide an icons object. Import icons with: import { createIcons, icons } from "@opubase/opicon"; createIcons({ icons });',
+      'Please provide an icons object. Import icons with: import { createIcons, icons } from "@opudoc/opicon"; createIcons({ icons });',
     );
   }
 

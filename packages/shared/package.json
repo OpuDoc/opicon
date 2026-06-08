@@ -1,6 +1,6 @@
 {
-  "name": "@opubase/opicon-shared",
-  "version": "0.1.1",
+  "name": "@opudoc/opicon-shared",
+  "version": "0.1.2",
   "license": "ISC",
   "description": "Shared utilities for Opicon icon packages.",
   "repository": {
@@ -19,14 +19,22 @@
   },
   "sideEffects": false,
   "main": "dist/cjs/shared.js",
-  "module": "dist/esm/shared.mjs",
+  "module": "dist/esm/index.mjs",
   "types": "dist/shared.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/shared.d.ts",
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/shared.js"
+    }
+  },
   "files": [
     "dist"
   ],
   "scripts": {
     "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
-    "build": "pnpm clean && rollup -c rollup.config.mjs"
+    "build": "pnpm clean && rollup -c rollup.config.mjs",
+    "prepublishOnly": "pnpm build"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^16.0.0",

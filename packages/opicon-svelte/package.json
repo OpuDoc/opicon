@@ -1,6 +1,6 @@
 {
-  "name": "@opubase/opicon-svelte",
-  "version": "0.1.1",
+  "name": "@opudoc/opicon-svelte",
+  "version": "0.1.2",
   "description": "An Opicon icon library package for Svelte applications.",
   "license": "ISC",
   "homepage": "https://github.com/OpuBase/opicon",
@@ -35,13 +35,13 @@
     "./icons/*": "./src/icons/*"
   },
   "dependencies": {
-    "@opubase/opicon-shared": "workspace:*"
+    "@opudoc/opicon-shared": "workspace:*"
   },
   "peerDependencies": {
     "svelte": "^4.0.0 || ^5.0.0"
   },
   "scripts": {
-    "build": "node -e \"console.log('@opubase/opicon-svelte ships Svelte source from src/')\"",
+    "build": "node -e \"console.log('@opudoc/opicon-svelte ships Svelte source from src/')\"",
     "prepublishOnly": "node ../../scripts/build-icons.mjs"
   }
 }

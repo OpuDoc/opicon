@@ -1,5 +1,5 @@
 import { createElement, forwardRef } from 'react';
-import { mergeClasses, toKebabCase, toPascalCase } from '@opubase/opicon-shared';
+import { mergeClasses, toKebabCase, toPascalCase } from '@opudoc/opicon-shared';
 import Icon from './Icon';
 import type { IconNode, OpiconIcon } from './types';
 
