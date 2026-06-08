@@ -1,0 +1,38 @@
+{
+  "name": "@opubase/opicon-shared",
+  "version": "0.1.1",
+  "license": "ISC",
+  "description": "Shared utilities for Opicon icon packages.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OpuBase/opicon.git",
+    "directory": "packages/shared"
+  },
+  "homepage": "https://github.com/OpuBase/opicon",
+  "bugs": "https://github.com/OpuBase/opicon/issues",
+  "author": "OpuBase (https://github.com/OpuBase)",
+  "contributors": [
+    "RafaelK-F (https://github.com/RafaelK-F)"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "main": "dist/cjs/shared.js",
+  "module": "dist/esm/shared.mjs",
+  "types": "dist/shared.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
+    "build": "pnpm clean && rollup -c rollup.config.mjs"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "rollup": "^4.59.0",
+    "rollup-plugin-dts": "^6.2.3",
+    "rollup-plugin-esbuild": "^6.2.1",
+    "typescript": "^5.8.3"
+  }
+}
