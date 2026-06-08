@@ -1,6 +1,6 @@
 {
-  "name": "@opubase/opicon-react-native",
-  "version": "0.1.1",
+  "name": "@opudoc/opicon-react-native",
+  "version": "0.1.2",
   "description": "An Opicon icon library package for React Native applications.",
   "license": "ISC",
   "homepage": "https://github.com/OpuBase/opicon",
@@ -42,7 +42,7 @@
     "react-native-svg": ">=13.0.0"
   },
   "dependencies": {
-    "@opubase/opicon-shared": "workspace:*"
+    "@opudoc/opicon-shared": "workspace:*"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^16.0.0",

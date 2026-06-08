@@ -1,6 +1,6 @@
 {
-  "name": "@opubase/opicon-vue",
-  "version": "0.1.1",
+  "name": "@opudoc/opicon-vue",
+  "version": "0.1.2",
   "description": "An Opicon icon library package for Vue applications.",
   "license": "ISC",
   "homepage": "https://github.com/OpuBase/opicon",
@@ -40,7 +40,7 @@
     "vue": "^3.0.0"
   },
   "dependencies": {
-    "@opubase/opicon-shared": "workspace:*"
+    "@opudoc/opicon-shared": "workspace:*"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^16.0.0",

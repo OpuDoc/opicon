@@ -81,7 +81,7 @@ importers:
 
   packages/opicon-preact:
     dependencies:
-      '@opubase/opicon-shared':
+      '@opudoc/opicon-shared':
         specifier: workspace:*
         version: link:../shared
     devDependencies:
@@ -106,7 +106,7 @@ importers:
 
   packages/opicon-react:
     dependencies:
-      '@opubase/opicon-shared':
+      '@opudoc/opicon-shared':
         specifier: workspace:*
         version: link:../shared
     devDependencies:
@@ -134,7 +134,7 @@ importers:
 
   packages/opicon-react-native:
     dependencies:
-      '@opubase/opicon-shared':
+      '@opudoc/opicon-shared':
         specifier: workspace:*
         version: link:../shared
       react-native:
@@ -168,7 +168,7 @@ importers:
 
   packages/opicon-solid:
     dependencies:
-      '@opubase/opicon-shared':
+      '@opudoc/opicon-shared':
         specifier: workspace:*
         version: link:../shared
     devDependencies:
@@ -211,7 +211,7 @@ importers:
 
   packages/opicon-svelte:
     dependencies:
-      '@opubase/opicon-shared':
+      '@opudoc/opicon-shared':
         specifier: workspace:*
         version: link:../shared
       svelte:
@@ -220,7 +220,7 @@ importers:
 
   packages/opicon-vue:
     dependencies:
-      '@opubase/opicon-shared':
+      '@opudoc/opicon-shared':
         specifier: workspace:*
         version: link:../shared
     devDependencies:

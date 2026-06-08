@@ -1,5 +1,5 @@
 import { defineComponent, h, type PropType } from 'vue';
-import { mergeClasses } from '@opubase/opicon-shared';
+import { mergeClasses } from '@opudoc/opicon-shared';
 import type { IconNode } from './types';
 
 const renderNode = (node: IconNode[number]): ReturnType<typeof h> => {

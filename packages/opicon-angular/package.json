@@ -1,6 +1,6 @@
 {
-  "name": "@opubase/opicon-angular",
-  "version": "0.1.1",
+  "name": "@opudoc/opicon-angular",
+  "version": "0.1.2",
   "description": "An Opicon icon library package for Angular applications.",
   "license": "ISC",
   "homepage": "https://github.com/OpuBase/opicon",

@@ -1,6 +1,6 @@
 {
-  "name": "@opubase/opicon-astro",
-  "version": "0.1.1",
+  "name": "@opudoc/opicon-astro",
+  "version": "0.1.2",
   "description": "An Opicon icon library package for Astro applications.",
   "license": "ISC",
   "homepage": "https://github.com/OpuBase/opicon",
@@ -35,7 +35,7 @@
     "./icons/*": "./src/icons/*"
   },
   "scripts": {
-    "build": "node -e \"console.log('@opubase/opicon-astro uses generated src/icons from root build:icons')\"",
+    "build": "node -e \"console.log('@opudoc/opicon-astro uses generated src/icons from root build:icons')\"",
     "prepublishOnly": "pnpm build"
   },
   "peerDependencies": {
