@@ -1,0 +1,43 @@
+---
+import type { IconNode } from './types';
+
+interface Props {
+  iconNode: IconNode;
+  size?: number | string;
+  color?: string;
+  strokeWidth?: number | string;
+  absoluteStrokeWidth?: boolean;
+  class?: string;
+}
+
+const { iconNode, size = 24, color = 'currentColor', strokeWidth = 2, absoluteStrokeWidth = false, class: className = '' } = Astro.props as Props;
+const calculatedStrokeWidth = absoluteStrokeWidth ? (Number(strokeWidth) * 24) / Number(size) : strokeWidth;
+
+const renderAttrs = (attrs: Record<string, string | number>) =>
+  Object.entries(attrs)
+    .filter(([name]) => name !== 'key')
+    .map(([name, value]) => `${name}="${String(value).replace(/"/g, '&quot;')}"`)
+    .join(' ');
+
+const renderNode = (node: IconNode[number]): string => {
+  if (node.length === 3) {
+    const [tag, attrs, children] = node;
+    return `<${tag} ${renderAttrs(attrs)}>${children.map(renderNode).join('')}</${tag}>`;
+  }
+  const [tag, attrs] = node;
+  return `<${tag} ${renderAttrs(attrs)} />`;
+};
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke={color}
+  stroke-width={calculatedStrokeWidth}
+  class:list={['opicon', className]}
+  aria-hidden="true"
+  set:html={iconNode.map(renderNode).join('')}
+/>

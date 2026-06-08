@@ -1,0 +1,53 @@
+{
+  "name": "@opubase/opicon-solid",
+  "version": "0.1.1",
+  "description": "An Opicon icon library package for Solid applications.",
+  "license": "ISC",
+  "homepage": "https://github.com/OpuBase/opicon",
+  "bugs": "https://github.com/OpuBase/opicon/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OpuBase/opicon.git",
+    "directory": "packages/opicon-solid"
+  },
+  "author": "OpuBase (https://github.com/OpuBase)",
+  "contributors": [
+    "RafaelK-F (https://github.com/RafaelK-F)"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "Opicon",
+    "Solid",
+    "Icons",
+    "Icon",
+    "SVG"
+  ],
+  "main": "dist/cjs/opicon-solid.js",
+  "module": "dist/esm/opicon-solid.mjs",
+  "types": "dist/opicon-solid.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
+    "build": "pnpm clean && rollup -c rollup.config.mjs",
+    "prepublishOnly": "pnpm build"
+  },
+  "peerDependencies": {
+    "solid-js": "^1.0.0"
+  },
+  "dependencies": {
+    "@opubase/opicon-shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "rollup": "^4.59.0",
+    "rollup-plugin-dts": "^6.2.3",
+    "rollup-plugin-esbuild": "^6.2.1",
+    "solid-js": "^1.9.0",
+    "typescript": "^5.8.3"
+  }
+}
