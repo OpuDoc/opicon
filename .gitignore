@@ -6,3 +6,4 @@ packages/opicon/src/icons-map.ts
 packages/opicon-static/icons/
 packages/opicon-static/icon-nodes.json
 packages/opicon-static/manifest.json
+.idea/
