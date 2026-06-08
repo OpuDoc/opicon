@@ -1,0 +1,47 @@
+{
+  "name": "@opubase/opicon-astro",
+  "version": "0.1.1",
+  "description": "An Opicon icon library package for Astro applications.",
+  "license": "ISC",
+  "homepage": "https://github.com/OpuBase/opicon",
+  "bugs": "https://github.com/OpuBase/opicon/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OpuBase/opicon.git",
+    "directory": "packages/opicon-astro"
+  },
+  "author": "OpuBase (https://github.com/OpuBase)",
+  "contributors": [
+    "RafaelK-F (https://github.com/RafaelK-F)"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "Opicon",
+    "Astro",
+    "Icons",
+    "Icon",
+    "SVG"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "src"
+  ],
+  "exports": {
+    ".": "./src/index.ts",
+    "./Icon.astro": "./src/Icon.astro",
+    "./icons/*": "./src/icons/*"
+  },
+  "scripts": {
+    "build": "node -e \"console.log('@opubase/opicon-astro uses generated src/icons from root build:icons')\"",
+    "prepublishOnly": "pnpm build"
+  },
+  "peerDependencies": {
+    "astro": "^4.0.0 || ^5.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}
