@@ -3,14 +3,14 @@
   "version": "0.1.3",
   "description": "An Opicon icon library package for Preact applications.",
   "license": "ISC",
-  "homepage": "https://github.com/OpuBase/opicon",
-  "bugs": "https://github.com/OpuBase/opicon/issues",
+  "homepage": "https://github.com/OpuDoc/opicon",
+  "bugs": "https://github.com/OpuDoc/opicon/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OpuBase/opicon.git",
+    "url": "https://github.com/OpuDoc/opicon.git",
     "directory": "packages/opicon-preact"
   },
-  "author": "OpuBase (https://github.com/OpuBase)",
+  "author": "OpuDoc (https://github.com/OpuDoc)",
   "contributors": [
     "RafaelK-F (https://github.com/RafaelK-F)"
   ],
