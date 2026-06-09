@@ -1,0 +1,1 @@
+root = true[*]charset = utf-8end_of_line = lfindent_style = spaceindent_size = 2trim_trailing_whitespace = trueinsert_final_newline = true[*.md]trim_trailing_whitespace = false[*.svg]indent_size = 2[*.{woff,woff2,ttf,otf,eot,png,jpg,jpeg,gif,ico}]charset = unset
