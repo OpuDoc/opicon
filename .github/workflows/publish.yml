@@ -1,0 +1,102 @@
+name: Publish to npm
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: npm
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build icons + packages
+        run: pnpm build
+
+      - name: Publish @opudoc/opicon-shared
+        run: pnpm publish --access public --no-git-checks
+        working-directory: packages/shared
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @opudoc/opicon
+        run: pnpm publish --access public --no-git-checks
+        working-directory: packages/opicon
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @opudoc/opicon-react
+        run: pnpm publish --access public --no-git-checks
+        working-directory: packages/opicon-react
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @opudoc/opicon-preact
+        run: pnpm publish --access public --no-git-checks
+        working-directory: packages/opicon-preact
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @opudoc/opicon-vue
+        run: pnpm publish --access public --no-git-checks
+        working-directory: packages/opicon-vue
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @opudoc/opicon-svelte
+        run: pnpm publish --access public --no-git-checks
+        working-directory: packages/opicon-svelte
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @opudoc/opicon-solid
+        run: pnpm publish --access public --no-git-checks
+        working-directory: packages/opicon-solid
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @opudoc/opicon-react-native
+        run: pnpm publish --access public --no-git-checks
+        working-directory: packages/opicon-react-native
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @opudoc/opicon-angular
+        run: pnpm publish --access public --no-git-checks
+        working-directory: packages/opicon-angular
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @opudoc/opicon-astro
+        run: pnpm publish --access public --no-git-checks
+        working-directory: packages/opicon-astro
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @opudoc/opicon-static
+        run: pnpm publish --access public --no-git-checks
+        working-directory: packages/opicon-static
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
