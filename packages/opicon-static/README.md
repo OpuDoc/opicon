@@ -2,7 +2,7 @@
   <strong>Static SVG assets for the Opicon icon library.</strong>
   <br /><br />
   <a href="https://www.npmjs.com/package/@opudoc/opicon-static"><img src="https://img.shields.io/npm/v/%40opudoc%2Fopicon-static?color=blue" alt="npm" /></a>
-  <img src="https://img.shields.io/badge/downloads-0-lightgrey" alt="NPM Downloads" />
+  <img src="https://img.shields.io/npm/dt/%40opudoc%2Fopicon-static" alt="NPM Downloads" />
   <a href="https://github.com/OpuDoc/opicon/blob/main/LICENSE.md"><img src="https://img.shields.io/badge/license-ISC-green" alt="License" /></a>
   <br /><br />
   <a href="https://github.com/OpuDoc/opicon">About</a>
