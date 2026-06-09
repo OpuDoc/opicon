@@ -36,10 +36,12 @@ function normalizeValue(value) {
   return value;
 }
 
+const STRIP_ATTRS = new Set(['id', 'clip-path', 'clip-rule']);
+
 function normalizeAttrs(attrs) {
   const result = {};
   for (const [key, value] of Object.entries(attrs)) {
-    if (key === 'id' || key.startsWith('data-')) continue;
+    if (STRIP_ATTRS.has(key) || key.startsWith('data-')) continue;
     result[key] = normalizeValue(value);
   }
   return result;
@@ -55,9 +57,11 @@ function isArtifactNode(node) {
 function nodeToIconNode(node, addKey = false, keyRef = { i: 0 }) {
   if (!node?.name) return null;
   if (isArtifactNode(node)) return null;
+  if (node.name === 'defs') return null;
   const attrs = normalizeAttrs(node.attributes);
   if (addKey) attrs.key = `k${keyRef.i++}`;
   const childNodes = (node.children ?? []).map((child) => nodeToIconNode(child, addKey, keyRef)).filter(Boolean);
+  if (node.name === 'g' && Object.keys(attrs).length === 0 && childNodes.length === 0) return null;
   if (childNodes.length) return [node.name, attrs, childNodes];
   return [node.name, attrs];
 }
