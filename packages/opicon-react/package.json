@@ -1,6 +1,6 @@
 {
   "name": "@opudoc/opicon-react",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "An Opicon icon library package for React applications.",
   "license": "ISC",
   "homepage": "https://github.com/OpuBase/opicon",
