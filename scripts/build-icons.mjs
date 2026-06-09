@@ -45,8 +45,16 @@ function normalizeAttrs(attrs) {
   return result;
 }
 
+function isArtifactNode(node) {
+  const attrs = node.attributes ?? {};
+  if (attrs.opacity === '0') return true;
+  if (attrs.fill === 'none' && attrs.stroke === 'none' && attrs['aria-hidden'] === 'true') return true;
+  return false;
+}
+
 function nodeToIconNode(node, addKey = false, keyRef = { i: 0 }) {
   if (!node?.name) return null;
+  if (isArtifactNode(node)) return null;
   const attrs = normalizeAttrs(node.attributes);
   if (addKey) attrs.key = `k${keyRef.i++}`;
   const childNodes = (node.children ?? []).map((child) => nodeToIconNode(child, addKey, keyRef)).filter(Boolean);
