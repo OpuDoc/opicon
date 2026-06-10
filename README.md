@@ -1,4 +1,26 @@
-# Opicon
+<p align="center">
+  <a href="https://github.com/OpuDoc/opicon#gh-light-mode-only">
+    <img src="./assets/opicon/opicon-logo-title-lightmode.svg#gh-light-mode-only" alt="Opicon - Open-source SVG icon library from OpuDoc for web, apps, and design tools." width="480">
+  </a>
+  <a href="https://github.com/OpuDoc/opicon#gh-dark-mode-only">
+    <img src="./assets/opicon/opicon-logo-title-darkmode.svg#gh-dark-mode-only" alt="Opicon - Open-source SVG icon library from OpuDoc for web, apps, and design tools." width="480">
+  </a>
+</p>
+<p align="center">
+  <a href="https://github.com/OpuDoc/opicon/blob/main/LICENSE.md"><img src="https://img.shields.io/badge/license-ISC-green" alt="license"></a>
+  <a href="https://www.npmjs.com/package/@opudoc/opicon"><img src="https://img.shields.io/npm/v/%40opudoc%2Fopicon?color=blue" alt="npm"></a>
+  <a href="https://github.com/OpuDoc/opicon/releases"><img src="https://img.shields.io/github/v/release/OpuDoc/opicon" alt="release"></a>
+  <a href="https://github.com/OpuDoc/opicon/actions/workflows/publish.yml"><img src="https://github.com/OpuDoc/opicon/actions/workflows/publish.yml/badge.svg" alt="publish status"></a>
+</p>
+<p align="center">
+  <a href="https://github.com/OpuDoc/opicon/tree/main/icons">Icons</a>
+  ·
+  <a href="#packages">Packages</a>
+  ·
+  <a href="https://github.com/OpuDoc/opicon/blob/main/LICENSE.md">License</a>
+  ·
+  <a href="https://github.com/OpuDoc/opicon/releases">Releases</a>
+</p>
 
 Opicon is an open-source icon library that provides vector (svg) files for displaying icons and symbols in digital and non-digital projects. The library aims to make it easier for designers and developers to incorporate icons into their projects.
 
