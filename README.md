@@ -1,9 +1,9 @@
 <p align="center">
   <a href="https://github.com/OpuDoc/opicon#gh-light-mode-only">
-    <img src="./assets/opicon/opicon-logo-title-lightmode.svg#gh-light-mode-only" alt="Opicon - Open-source SVG icon library from OpuDoc for web, apps, and design tools." width="480">
+    <img src="./assets/opicon/opicon-logo-title-darkmode.svg#gh-light-mode-only" alt="Opicon - Open-source SVG icon library from OpuDoc for web, apps, and design tools." width="480">
   </a>
   <a href="https://github.com/OpuDoc/opicon#gh-dark-mode-only">
-    <img src="./assets/opicon/opicon-logo-title-darkmode.svg#gh-dark-mode-only" alt="Opicon - Open-source SVG icon library from OpuDoc for web, apps, and design tools." width="480">
+    <img src="./assets/opicon/opicon-logo-title-lightmode.svg#gh-dark-mode-only" alt="Opicon - Open-source SVG icon library from OpuDoc for web, apps, and design tools." width="480">
   </a>
 </p>
 <p align="center">
