@@ -1,6 +1,6 @@
 {
   "name": "@opudoc/opicon-shared",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "license": "ISC",
   "description": "Shared utilities for Opicon icon packages.",
   "repository": {
