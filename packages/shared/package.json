@@ -1,6 +1,6 @@
 {
   "name": "@opudoc/opicon-shared",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "license": "ISC",
   "description": "Shared utilities for Opicon icon packages.",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "https://github.com/OpuDoc/opicon.git",
     "directory": "packages/shared"
   },
-  "homepage": "https://github.com/OpuDoc/opicon",
+  "homepage": "https://opicon.net",
   "bugs": "https://github.com/OpuDoc/opicon/issues",
   "author": "OpuDoc (https://github.com/OpuDoc)",
   "contributors": [

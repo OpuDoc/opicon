@@ -1,5 +1,5 @@
 import { defineComponent, h, type PropType } from 'vue';
-import { mergeClasses } from '@opudoc/opicon-shared';
+import { iconNodeUsesFill, mergeClasses } from '@opudoc/opicon-shared';
 import type { IconNode } from './types';
 
 const renderNode = (node: IconNode[number]): ReturnType<typeof h> => {
@@ -28,6 +28,8 @@ const Icon = defineComponent({
       const calculatedStrokeWidth = props.absoluteStrokeWidth
         ? (Number(props.strokeWidth) * 24) / Number(props.size)
         : props.strokeWidth;
+      const iconColor = props.color ?? 'currentColor';
+      const filled = iconNodeUsesFill(props.iconNode);
 
       return h(
         'svg',
@@ -36,8 +38,9 @@ const Icon = defineComponent({
           width: props.size,
           height: props.size,
           viewBox: '0 0 24 24',
-          fill: 'none',
-          stroke: props.color,
+          color: iconColor,
+          fill: filled ? iconColor : 'none',
+          stroke: iconColor,
           strokeWidth: calculatedStrokeWidth,
           class: mergeClasses('opicon', props.class),
           'aria-hidden': true,

@@ -1,4 +1,5 @@
 ---
+import { iconNodeUsesFill } from '@opudoc/opicon-shared';
 import type { IconNode } from './types';
 
 interface Props {
@@ -12,6 +13,7 @@ interface Props {
 
 const { iconNode, size = 24, color = 'currentColor', strokeWidth = 2, absoluteStrokeWidth = false, class: className = '' } = Astro.props as Props;
 const calculatedStrokeWidth = absoluteStrokeWidth ? (Number(strokeWidth) * 24) / Number(size) : strokeWidth;
+const filled = iconNodeUsesFill(iconNode);
 
 const renderAttrs = (attrs: Record<string, string | number>) =>
   Object.entries(attrs)
@@ -34,7 +36,8 @@ const renderNode = (node: IconNode[number]): string => {
   width={size}
   height={size}
   viewBox="0 0 24 24"
-  fill="none"
+  color={color}
+  fill={filled ? color : 'none'}
   stroke={color}
   stroke-width={calculatedStrokeWidth}
   class:list={['opicon', className]}

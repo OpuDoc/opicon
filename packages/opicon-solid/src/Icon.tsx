@@ -1,5 +1,5 @@
 import { h, splitProps } from 'solid-js';
-import { mergeClasses } from '@opudoc/opicon-shared';
+import { iconNodeUsesFill, mergeClasses } from '@opudoc/opicon-shared';
 import type { IconNode, OpiconProps } from './types';
 
 interface IconComponentProps extends OpiconProps {
@@ -24,6 +24,8 @@ const Icon = (props: IconComponentProps) => {
     const value = local.strokeWidth ?? 2;
     return local.absoluteStrokeWidth ? (Number(value) * 24) / Number(size()) : value;
   };
+  const iconColor = () => local.color ?? 'currentColor';
+  const filled = () => iconNodeUsesFill(local.iconNode);
 
   return h(
     'svg',
@@ -32,8 +34,9 @@ const Icon = (props: IconComponentProps) => {
       width: size(),
       height: size(),
       viewBox: '0 0 24 24',
-      fill: 'none',
-      stroke: local.color ?? 'currentColor',
+      color: iconColor(),
+      fill: filled() ? iconColor() : 'none',
+      stroke: iconColor(),
       'stroke-width': strokeWidth(),
       class: mergeClasses('opicon', local.class),
       'aria-hidden': true,
