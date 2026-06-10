@@ -12,3 +12,6 @@ export const mergeClasses = (...classes: (string | undefined | false)[]): string
 
 export const hasA11yProp = (props: Record<string, unknown>): boolean =>
   'aria-label' in props || 'aria-labelledby' in props || 'title' in props;
+
+export { isBoldIconName } from './isBoldIconName';
+export { iconNodeUsesFill } from './iconNodeUsesFill';

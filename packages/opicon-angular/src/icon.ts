@@ -6,6 +6,7 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
+import { iconNodeUsesFill } from '@opudoc/opicon-shared';
 import type { IconNode } from './types';
 
 @Component({
@@ -29,6 +30,9 @@ export class OpiconIcon implements AfterViewInit {
     const svg = this.svgRef.nativeElement;
     this.renderer.setAttribute(svg, 'width', String(this.size));
     this.renderer.setAttribute(svg, 'height', String(this.size));
+    const filled = iconNodeUsesFill(this.iconNode);
+    this.renderer.setAttribute(svg, 'color', this.color);
+    this.renderer.setAttribute(svg, 'fill', filled ? this.color : 'none');
     this.renderer.setAttribute(svg, 'stroke', this.color);
     const strokeWidth = this.absoluteStrokeWidth
       ? (Number(this.strokeWidth) * 24) / Number(this.size)

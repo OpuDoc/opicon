@@ -1,6 +1,6 @@
 import { createElement } from 'react';
 import Svg, { Circle, ClipPath, Defs, G, Line, Path, Polygon, Polyline, Rect } from 'react-native-svg';
-import { mergeClasses } from '@opudoc/opicon-shared';
+import { iconNodeUsesFill, mergeClasses } from '@opudoc/opicon-shared';
 import type { IconNode, OpiconProps } from './types';
 
 const TAG_MAP: Record<string, React.ComponentType<Record<string, unknown>>> = {
@@ -39,6 +39,8 @@ const renderNode = (node: IconNode[number], index: number): ReturnType<typeof cr
 
 const Icon = ({ color, size = 24, strokeWidth = 2, absoluteStrokeWidth, className, iconNode, ...rest }: IconComponentProps) => {
   const calculatedStrokeWidth = absoluteStrokeWidth ? (Number(strokeWidth) * 24) / Number(size) : strokeWidth;
+  const iconColor = color ?? 'currentColor';
+  const filled = iconNodeUsesFill(iconNode);
 
   return createElement(
     Svg,
@@ -46,8 +48,9 @@ const Icon = ({ color, size = 24, strokeWidth = 2, absoluteStrokeWidth, classNam
       width: size,
       height: size,
       viewBox: '0 0 24 24',
-      fill: 'none',
-      stroke: color ?? 'currentColor',
+      color: iconColor,
+      fill: filled ? iconColor : 'none',
+      stroke: iconColor,
       strokeWidth: calculatedStrokeWidth,
       className: mergeClasses('opicon', className),
       ...rest,

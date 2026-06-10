@@ -1,5 +1,5 @@
 import { h, type VNode } from 'preact';
-import { hasA11yProp, mergeClasses } from '@opudoc/opicon-shared';
+import { hasA11yProp, iconNodeUsesFill, mergeClasses } from '@opudoc/opicon-shared';
 import defaultAttributes from './defaultAttributes';
 import type { IconNode, OpiconProps } from './types';
 
@@ -20,6 +20,8 @@ const renderNode = (node: IconNode[number]): preact.VNode => {
 
 const Icon = ({ color, size = 24, strokeWidth = 2, absoluteStrokeWidth, className = '', iconNode, children, ...rest }: IconComponentProps): VNode => {
   const calculatedStrokeWidth = absoluteStrokeWidth ? (Number(strokeWidth) * 24) / Number(size) : strokeWidth;
+  const iconColor = color ?? 'currentColor';
+  const filled = iconNodeUsesFill(iconNode);
 
   return h(
     'svg',
@@ -27,7 +29,9 @@ const Icon = ({ color, size = 24, strokeWidth = 2, absoluteStrokeWidth, classNam
       ...defaultAttributes,
       width: size,
       height: size,
-      stroke: color ?? 'currentColor',
+      color: iconColor,
+      fill: filled ? iconColor : 'none',
+      stroke: iconColor,
       strokeWidth: calculatedStrokeWidth,
       className: mergeClasses('opicon', className),
       ...(!children && !hasA11yProp(rest) && { 'aria-hidden': true }),
