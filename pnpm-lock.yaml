@@ -49,6 +49,10 @@ importers:
         version: 5.9.3
 
   packages/opicon-angular:
+    dependencies:
+      '@opudoc/opicon-shared':
+        specifier: workspace:*
+        version: link:../shared
     devDependencies:
       '@angular/core':
         specifier: ^19.0.0
