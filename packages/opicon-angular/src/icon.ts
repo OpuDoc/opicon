@@ -6,7 +6,7 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
-import { iconNodeUsesFill } from '@opudoc/opicon-shared';
+import { getIconSvgPaintProps } from '@opudoc/opicon-shared';
 import type { IconNode } from './types';
 
 @Component({
@@ -30,14 +30,18 @@ export class OpiconIcon implements AfterViewInit {
     const svg = this.svgRef.nativeElement;
     this.renderer.setAttribute(svg, 'width', String(this.size));
     this.renderer.setAttribute(svg, 'height', String(this.size));
-    const filled = iconNodeUsesFill(this.iconNode);
-    this.renderer.setAttribute(svg, 'color', this.color);
-    this.renderer.setAttribute(svg, 'fill', filled ? this.color : 'none');
-    this.renderer.setAttribute(svg, 'stroke', this.color);
-    const strokeWidth = this.absoluteStrokeWidth
-      ? (Number(this.strokeWidth) * 24) / Number(this.size)
-      : this.strokeWidth;
-    this.renderer.setAttribute(svg, 'stroke-width', String(strokeWidth));
+    const paint = getIconSvgPaintProps(this.iconNode, {
+      color: this.color,
+      strokeWidth: this.strokeWidth,
+      absoluteStrokeWidth: this.absoluteStrokeWidth,
+      size: this.size,
+    });
+    this.renderer.setAttribute(svg, 'color', paint.color);
+    this.renderer.setAttribute(svg, 'fill', paint.fill);
+    this.renderer.setAttribute(svg, 'stroke', paint.stroke);
+    if (paint.strokeWidth !== undefined) {
+      this.renderer.setAttribute(svg, 'stroke-width', String(paint.strokeWidth));
+    }
     if (this.class) this.renderer.setAttribute(svg, 'class', `opicon ${this.class}`);
     this.renderer.setAttribute(svg, 'aria-hidden', 'true');
     this.appendNodes(this.iconNode, svg);

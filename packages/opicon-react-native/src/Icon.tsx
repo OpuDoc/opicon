@@ -1,6 +1,6 @@
 import { createElement } from 'react';
 import Svg, { Circle, ClipPath, Defs, G, Line, Path, Polygon, Polyline, Rect } from 'react-native-svg';
-import { iconNodeUsesFill, mergeClasses } from '@opudoc/opicon-shared';
+import { getIconSvgPaintProps, mergeClasses } from '@opudoc/opicon-shared';
 import type { IconNode, OpiconProps } from './types';
 
 const TAG_MAP: Record<string, React.ComponentType<Record<string, unknown>>> = {
@@ -38,9 +38,7 @@ const renderNode = (node: IconNode[number], index: number): ReturnType<typeof cr
 };
 
 const Icon = ({ color, size = 24, strokeWidth = 2, absoluteStrokeWidth, className, iconNode, ...rest }: IconComponentProps) => {
-  const calculatedStrokeWidth = absoluteStrokeWidth ? (Number(strokeWidth) * 24) / Number(size) : strokeWidth;
-  const iconColor = color ?? 'currentColor';
-  const filled = iconNodeUsesFill(iconNode);
+  const paint = getIconSvgPaintProps(iconNode, { color, strokeWidth, absoluteStrokeWidth, size });
 
   return createElement(
     Svg,
@@ -48,10 +46,10 @@ const Icon = ({ color, size = 24, strokeWidth = 2, absoluteStrokeWidth, classNam
       width: size,
       height: size,
       viewBox: '0 0 24 24',
-      color: iconColor,
-      fill: filled ? iconColor : 'none',
-      stroke: iconColor,
-      strokeWidth: calculatedStrokeWidth,
+      color: paint.color,
+      fill: paint.fill,
+      stroke: paint.stroke,
+      ...(paint.strokeWidth !== undefined && { strokeWidth: paint.strokeWidth }),
       className: mergeClasses('opicon', className),
       ...rest,
     },

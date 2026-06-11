@@ -1,7 +1,7 @@
 'use client';
 
 import { createElement, forwardRef } from 'react';
-import { hasA11yProp, iconNodeUsesFill, mergeClasses } from '@opudoc/opicon-shared';
+import { getIconSvgPaintProps, hasA11yProp, mergeClasses } from '@opudoc/opicon-shared';
 import defaultAttributes from './defaultAttributes';
 import type { IconNode, OpiconProps } from './types';
 
@@ -22,11 +22,12 @@ const renderNode = (node: IconNode[number]): ReturnType<typeof createElement> =>
 
 const Icon = forwardRef<SVGSVGElement, IconComponentProps>(
   ({ color, size = 24, strokeWidth = 2, absoluteStrokeWidth, className = '', iconNode, children, ...rest }, ref) => {
-    const calculatedStrokeWidth = absoluteStrokeWidth
-      ? (Number(strokeWidth) * 24) / Number(size)
-      : strokeWidth;
-    const iconColor = color ?? 'currentColor';
-    const filled = iconNodeUsesFill(iconNode);
+    const paint = getIconSvgPaintProps(iconNode, {
+      color,
+      strokeWidth,
+      absoluteStrokeWidth,
+      size,
+    });
 
     return createElement(
       'svg',
@@ -35,10 +36,10 @@ const Icon = forwardRef<SVGSVGElement, IconComponentProps>(
         ...defaultAttributes,
         width: size,
         height: size,
-        color: iconColor,
-        fill: filled ? iconColor : 'none',
-        stroke: iconColor,
-        strokeWidth: calculatedStrokeWidth,
+        color: paint.color,
+        fill: paint.fill,
+        stroke: paint.stroke,
+        ...(paint.strokeWidth !== undefined && { strokeWidth: paint.strokeWidth }),
         className: mergeClasses('opicon', className),
         ...(!children && !hasA11yProp(rest) && { 'aria-hidden': true }),
         ...rest,

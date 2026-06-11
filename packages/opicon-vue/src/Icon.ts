@@ -1,5 +1,5 @@
 import { defineComponent, h, type PropType } from 'vue';
-import { iconNodeUsesFill, mergeClasses } from '@opudoc/opicon-shared';
+import { getIconSvgPaintProps, mergeClasses } from '@opudoc/opicon-shared';
 import type { IconNode } from './types';
 
 const renderNode = (node: IconNode[number]): ReturnType<typeof h> => {
@@ -25,11 +25,12 @@ const Icon = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const calculatedStrokeWidth = props.absoluteStrokeWidth
-        ? (Number(props.strokeWidth) * 24) / Number(props.size)
-        : props.strokeWidth;
-      const iconColor = props.color ?? 'currentColor';
-      const filled = iconNodeUsesFill(props.iconNode);
+      const paint = getIconSvgPaintProps(props.iconNode, {
+        color: props.color,
+        strokeWidth: props.strokeWidth,
+        absoluteStrokeWidth: props.absoluteStrokeWidth,
+        size: props.size,
+      });
 
       return h(
         'svg',
@@ -38,10 +39,10 @@ const Icon = defineComponent({
           width: props.size,
           height: props.size,
           viewBox: '0 0 24 24',
-          color: iconColor,
-          fill: filled ? iconColor : 'none',
-          stroke: iconColor,
-          strokeWidth: calculatedStrokeWidth,
+          color: paint.color,
+          fill: paint.fill,
+          stroke: paint.stroke,
+          ...(paint.strokeWidth !== undefined && { strokeWidth: paint.strokeWidth }),
           class: mergeClasses('opicon', props.class),
           'aria-hidden': true,
           ...attrs,

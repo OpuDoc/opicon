@@ -1,5 +1,5 @@
 <script>
-  import { iconNodeUsesFill, mergeClasses } from '@opudoc/opicon-shared';
+  import { getIconSvgPaintProps, mergeClasses } from '@opudoc/opicon-shared';
 
   export let iconNode;
   export let size = 24;
@@ -8,10 +8,7 @@
   export let absoluteStrokeWidth = false;
   export let className = '';
 
-  $: calculatedStrokeWidth = absoluteStrokeWidth
-    ? (Number(strokeWidth) * 24) / Number(size)
-    : strokeWidth;
-  $: filled = iconNodeUsesFill(iconNode);
+  $: paint = getIconSvgPaintProps(iconNode, { color, strokeWidth, absoluteStrokeWidth, size });
 </script>
 
 <svg
@@ -19,10 +16,10 @@
   width={size}
   height={size}
   viewBox="0 0 24 24"
-  color={color}
-  fill={filled ? color : 'none'}
-  stroke={color}
-  stroke-width={calculatedStrokeWidth}
+  color={paint.color}
+  fill={paint.fill}
+  stroke={paint.stroke}
+  stroke-width={paint.strokeWidth}
   class={mergeClasses('opicon', className)}
   aria-hidden="true"
 >

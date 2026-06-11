@@ -1,5 +1,5 @@
 import { h, splitProps } from 'solid-js';
-import { iconNodeUsesFill, mergeClasses } from '@opudoc/opicon-shared';
+import { getIconSvgPaintProps, mergeClasses } from '@opudoc/opicon-shared';
 import type { IconNode, OpiconProps } from './types';
 
 interface IconComponentProps extends OpiconProps {
@@ -20,12 +20,13 @@ const renderNode = (node: IconNode[number]): ReturnType<typeof h> => {
 const Icon = (props: IconComponentProps) => {
   const [local, rest] = splitProps(props, ['iconNode', 'size', 'color', 'strokeWidth', 'absoluteStrokeWidth', 'class']);
   const size = () => local.size ?? 24;
-  const strokeWidth = () => {
-    const value = local.strokeWidth ?? 2;
-    return local.absoluteStrokeWidth ? (Number(value) * 24) / Number(size()) : value;
-  };
-  const iconColor = () => local.color ?? 'currentColor';
-  const filled = () => iconNodeUsesFill(local.iconNode);
+  const paint = () =>
+    getIconSvgPaintProps(local.iconNode, {
+      color: local.color,
+      strokeWidth: local.strokeWidth,
+      absoluteStrokeWidth: local.absoluteStrokeWidth,
+      size: size(),
+    });
 
   return h(
     'svg',
@@ -34,10 +35,10 @@ const Icon = (props: IconComponentProps) => {
       width: size(),
       height: size(),
       viewBox: '0 0 24 24',
-      color: iconColor(),
-      fill: filled() ? iconColor() : 'none',
-      stroke: iconColor(),
-      'stroke-width': strokeWidth(),
+      color: paint().color,
+      fill: paint().fill,
+      stroke: paint().stroke,
+      ...(paint().strokeWidth !== undefined && { 'stroke-width': paint().strokeWidth }),
       class: mergeClasses('opicon', local.class),
       'aria-hidden': true,
       ...rest,

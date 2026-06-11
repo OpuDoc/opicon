@@ -15,3 +15,5 @@ export const hasA11yProp = (props: Record<string, unknown>): boolean =>
 
 export { isBoldIconName } from './isBoldIconName';
 export { iconNodeUsesFill } from './iconNodeUsesFill';
+export { getIconSvgPaintProps } from './getIconSvgPaintProps';
+export type { IconSvgPaintProps } from './getIconSvgPaintProps';
