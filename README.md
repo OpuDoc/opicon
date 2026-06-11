@@ -1,4 +1,4 @@
-<p align="center">
+﻿<p align="center">
   <a href="https://github.com/OpuDoc/opicon#gh-light-mode-only">
     <img src="./assets/opicon/opicon-logo-title-darkmode.svg#gh-light-mode-only" alt="Opicon - Open-source SVG icon library from OpuDoc for web, apps, and design tools." width="480">
   </a>
@@ -8,19 +8,20 @@
 </p>
 <p align="center">
   <a href="https://opicon.net"><img src="https://img.shields.io/badge/website-opicon.net-9E9CFC" alt="website"></a>
+  <a href="https://discord.gg/opicon"><img src="https://img.shields.io/discord/1513890378514694369?label=discord&logo=discord&color=5865F2" alt="discord"></a>
   <a href="https://github.com/OpuDoc/opicon/blob/main/LICENSE.md"><img src="https://img.shields.io/badge/license-ISC-green" alt="license"></a>
   <a href="https://www.npmjs.com/package/@opudoc/opicon"><img src="https://img.shields.io/npm/v/%40opudoc%2Fopicon?color=blue" alt="npm"></a>
   <a href="https://github.com/OpuDoc/opicon/releases"><img src="https://img.shields.io/github/v/release/OpuDoc/opicon" alt="release"></a>
 </p>
 <p align="center">
   <a href="https://opicon.net">Website</a>
-  ·
+  ┬À
   <a href="https://github.com/OpuDoc/opicon/tree/main/icons">Icons</a>
-  ·
+  ┬À
   <a href="#packages">Packages</a>
-  ·
+  ┬À
   <a href="https://github.com/OpuDoc/opicon/blob/main/LICENSE.md">License</a>
-  ·
+  ┬À
   <a href="https://github.com/OpuDoc/opicon/releases">Releases</a>
 </p>
 
