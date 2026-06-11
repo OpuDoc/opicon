@@ -7,6 +7,7 @@ export interface IconSvgPaintProps {
   fill: string;
   stroke: string;
   strokeWidth?: number | string;
+  filled: boolean;
 }
 
 export const getIconSvgPaintProps = (
@@ -26,6 +27,7 @@ export const getIconSvgPaintProps = (
       color: iconColor,
       fill: iconColor,
       stroke: 'none',
+      filled: true,
     };
   }
 
@@ -39,5 +41,6 @@ export const getIconSvgPaintProps = (
     fill: 'none',
     stroke: iconColor,
     strokeWidth: calculatedStrokeWidth,
+    filled: false,
   };
 };

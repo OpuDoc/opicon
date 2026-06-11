@@ -1,5 +1,5 @@
 import { h, type VNode } from 'preact';
-import { getIconSvgPaintProps, hasA11yProp, mergeClasses } from '@opudoc/opicon-shared';
+import { getIconSvgPaintProps, hasA11yProp, iconNodeElementAttrs, mergeClasses } from '@opudoc/opicon-shared';
 import defaultAttributes from './defaultAttributes';
 import type { IconNode, OpiconProps } from './types';
 
@@ -7,14 +7,14 @@ interface IconComponentProps extends OpiconProps {
   iconNode: IconNode;
 }
 
-const renderNode = (node: IconNode[number]): preact.VNode => {
+const renderNode = (node: IconNode[number], filled: boolean): preact.VNode => {
   if (node.length === 3) {
     const [tag, attrs, children] = node;
-    const { key, ...rest } = attrs;
-    return h(tag, { key, ...rest }, children.map(renderNode));
+    const { key, ...rest } = iconNodeElementAttrs(tag, attrs, filled);
+    return h(tag, { key, ...rest }, children.map((child) => renderNode(child, filled)));
   }
   const [tag, attrs] = node;
-  const { key, ...rest } = attrs;
+  const { key, ...rest } = iconNodeElementAttrs(tag, attrs, filled);
   return h(tag, { key, ...rest });
 };
 
@@ -35,7 +35,7 @@ const Icon = ({ color, size = 24, strokeWidth = 2, absoluteStrokeWidth, classNam
       ...(!children && !hasA11yProp(rest) && { 'aria-hidden': true }),
       ...rest,
     },
-    [...iconNode.map(renderNode), children],
+    [...iconNode.map((node) => renderNode(node, paint.filled)), children],
   );
 };
 

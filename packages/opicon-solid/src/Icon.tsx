@@ -1,19 +1,19 @@
 import { h, splitProps } from 'solid-js';
-import { getIconSvgPaintProps, mergeClasses } from '@opudoc/opicon-shared';
+import { getIconSvgPaintProps, iconNodeElementAttrs, mergeClasses } from '@opudoc/opicon-shared';
 import type { IconNode, OpiconProps } from './types';
 
 interface IconComponentProps extends OpiconProps {
   iconNode: IconNode;
 }
 
-const renderNode = (node: IconNode[number]): ReturnType<typeof h> => {
+const renderNode = (node: IconNode[number], filled: boolean): ReturnType<typeof h> => {
   if (node.length === 3) {
     const [tag, attrs, children] = node;
-    const { key, ...rest } = attrs;
-    return h(tag as string, rest, children.map((child) => renderNode(child)));
+    const { key, ...rest } = iconNodeElementAttrs(tag, attrs, filled);
+    return h(tag as string, rest, children.map((child) => renderNode(child, filled)));
   }
   const [tag, attrs] = node;
-  const { key, ...rest } = attrs;
+  const { key, ...rest } = iconNodeElementAttrs(tag, attrs, filled);
   return h(tag as string, rest);
 };
 
@@ -43,7 +43,7 @@ const Icon = (props: IconComponentProps) => {
       'aria-hidden': true,
       ...rest,
     },
-    () => local.iconNode.map((node) => renderNode(node)),
+    () => local.iconNode.map((node) => renderNode(node, paint().filled)),
   );
 };
 

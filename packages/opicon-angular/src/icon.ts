@@ -6,7 +6,7 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
-import { getIconSvgPaintProps } from '@opudoc/opicon-shared';
+import { getIconSvgPaintProps, iconNodeElementAttrs } from '@opudoc/opicon-shared';
 import type { IconNode } from './types';
 
 @Component({
@@ -44,29 +44,34 @@ export class OpiconIcon implements AfterViewInit {
     }
     if (this.class) this.renderer.setAttribute(svg, 'class', `opicon ${this.class}`);
     this.renderer.setAttribute(svg, 'aria-hidden', 'true');
-    this.appendNodes(this.iconNode, svg);
+    this.appendNodes(this.iconNode, svg, paint.filled);
   }
 
-  private appendNodes(nodes: IconNode, parent: SVGElement): void {
+  private appendNodes(nodes: IconNode, parent: SVGElement, filled: boolean): void {
     nodes.forEach((node) => {
       if (node.length === 3) {
         const [tag, attrs, children] = node;
         const element = this.renderer.createElement(tag, 'svg');
-        this.setAttrs(element, attrs);
-        this.appendNodes(children, element);
+        this.setAttrs(element, tag, attrs, filled);
+        this.appendNodes(children, element, filled);
         this.renderer.appendChild(parent, element);
         return;
       }
       const [tag, attrs] = node;
       const element = this.renderer.createElement(tag, 'svg');
-      this.setAttrs(element, attrs);
+      this.setAttrs(element, tag, attrs, filled);
       this.renderer.appendChild(parent, element);
     });
   }
 
-  private setAttrs(element: Element, attrs: Record<string, string | number>): void {
-    Object.entries(attrs).forEach(([name, value]) => {
-      if (name !== 'key') this.renderer.setAttribute(element, name, String(value));
+  private setAttrs(
+    element: Element,
+    tag: string,
+    attrs: Record<string, string | number>,
+    filled: boolean,
+  ): void {
+    Object.entries(iconNodeElementAttrs(tag, attrs, filled)).forEach(([name, value]) => {
+      this.renderer.setAttribute(element, name, String(value));
     });
   }
 }

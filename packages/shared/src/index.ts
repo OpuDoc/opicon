@@ -14,6 +14,8 @@ export const hasA11yProp = (props: Record<string, unknown>): boolean =>
   'aria-label' in props || 'aria-labelledby' in props || 'title' in props;
 
 export { isBoldIconName } from './isBoldIconName';
+export { isFillPrimaryIconName, isStrokePrimaryIconName } from './isFillPrimaryIconName';
 export { iconNodeUsesFill } from './iconNodeUsesFill';
 export { getIconSvgPaintProps } from './getIconSvgPaintProps';
 export type { IconSvgPaintProps } from './getIconSvgPaintProps';
+export { iconNodeElementAttrs, sanitizeFilledPathAttrs } from './sanitizeFilledPathAttrs';

@@ -1,5 +1,5 @@
 ---
-import { getIconSvgPaintProps } from '@opudoc/opicon-shared';
+import { getIconSvgPaintProps, iconNodeElementAttrs } from '@opudoc/opicon-shared';
 import type { IconNode } from './types';
 
 interface Props {
@@ -20,13 +20,13 @@ const renderAttrs = (attrs: Record<string, string | number>) =>
     .map(([name, value]) => `${name}="${String(value).replace(/"/g, '&quot;')}"`)
     .join(' ');
 
-const renderNode = (node: IconNode[number]): string => {
+const renderNode = (node: IconNode[number], filled: boolean): string => {
   if (node.length === 3) {
     const [tag, attrs, children] = node;
-    return `<${tag} ${renderAttrs(attrs)}>${children.map(renderNode).join('')}</${tag}>`;
+    return `<${tag} ${renderAttrs(iconNodeElementAttrs(tag, attrs, filled))}>${children.map((child) => renderNode(child, filled)).join('')}</${tag}>`;
   }
   const [tag, attrs] = node;
-  return `<${tag} ${renderAttrs(attrs)} />`;
+  return `<${tag} ${renderAttrs(iconNodeElementAttrs(tag, attrs, filled))} />`;
 };
 ---
 
@@ -41,5 +41,5 @@ const renderNode = (node: IconNode[number]): string => {
   stroke-width={paint.strokeWidth}
   class:list={['opicon', className]}
   aria-hidden="true"
-  set:html={iconNode.map(renderNode).join('')}
+  set:html={iconNode.map((node) => renderNode(node, paint.filled)).join('')}
 />

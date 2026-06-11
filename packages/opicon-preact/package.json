@@ -1,6 +1,6 @@
 {
   "name": "@opudoc/opicon-preact",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "An Opicon icon library package for Preact applications.",
   "license": "ISC",
   "homepage": "https://opicon.net",

@@ -1,6 +1,6 @@
 import { createElement } from 'react';
 import Svg, { Circle, ClipPath, Defs, G, Line, Path, Polygon, Polyline, Rect } from 'react-native-svg';
-import { getIconSvgPaintProps, mergeClasses } from '@opudoc/opicon-shared';
+import { getIconSvgPaintProps, iconNodeElementAttrs, mergeClasses } from '@opudoc/opicon-shared';
 import type { IconNode, OpiconProps } from './types';
 
 const TAG_MAP: Record<string, React.ComponentType<Record<string, unknown>>> = {
@@ -20,20 +20,24 @@ interface IconComponentProps extends OpiconProps {
   iconNode: IconNode;
 }
 
-const renderNode = (node: IconNode[number], index: number): ReturnType<typeof createElement> => {
+const renderNode = (
+  node: IconNode[number],
+  index: number,
+  filled: boolean,
+): ReturnType<typeof createElement> => {
   if (node.length === 3) {
     const [tag, attrs, children] = node;
     const Component = TAG_MAP[tag] ?? tag;
-    const { key, ...rest } = attrs;
+    const { key, ...rest } = iconNodeElementAttrs(tag, attrs, filled);
     return createElement(
       Component,
       { key: key ?? index, ...rest },
-      children.map((child, childIndex) => renderNode(child, childIndex)),
+      children.map((child, childIndex) => renderNode(child, childIndex, filled)),
     );
   }
   const [tag, attrs] = node;
   const Component = TAG_MAP[tag] ?? tag;
-  const { key, ...rest } = attrs;
+  const { key, ...rest } = iconNodeElementAttrs(tag, attrs, filled);
   return createElement(Component, { key: key ?? index, ...rest });
 };
 
@@ -53,7 +57,7 @@ const Icon = ({ color, size = 24, strokeWidth = 2, absoluteStrokeWidth, classNam
       className: mergeClasses('opicon', className),
       ...rest,
     },
-    iconNode.map((node, index) => renderNode(node, index)),
+    iconNode.map((node, index) => renderNode(node, index, paint.filled)),
   );
 };
 

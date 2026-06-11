@@ -1,5 +1,5 @@
 <script>
-  import { getIconSvgPaintProps, mergeClasses } from '@opudoc/opicon-shared';
+  import { getIconSvgPaintProps, iconNodeElementAttrs, mergeClasses } from '@opudoc/opicon-shared';
 
   export let iconNode;
   export let size = 24;
@@ -26,18 +26,18 @@
   {#each iconNode as node}
     {#if node.length === 3}
       {@const tag = node[0]}
-      {@const attrs = node[1]}
+      {@const attrs = iconNodeElementAttrs(tag, node[1], paint.filled)}
       {@const children = node[2]}
       <svelte:element this={tag} {...attrs}>
         {#each children as child}
           {@const childTag = child.length === 3 ? child[0] : child[0]}
-          {@const childAttrs = child.length === 3 ? child[1] : child[1]}
+          {@const childAttrs = iconNodeElementAttrs(childTag, child.length === 3 ? child[1] : child[1], paint.filled)}
           <svelte:element this={childTag} {...childAttrs} />
         {/each}
       </svelte:element>
     {:else}
       {@const tag = node[0]}
-      {@const attrs = node[1]}
+      {@const attrs = iconNodeElementAttrs(tag, node[1], paint.filled)}
       <svelte:element this={tag} {...attrs} />
     {/if}
   {/each}

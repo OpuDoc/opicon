@@ -1,15 +1,15 @@
 import { defineComponent, h, type PropType } from 'vue';
-import { getIconSvgPaintProps, mergeClasses } from '@opudoc/opicon-shared';
+import { getIconSvgPaintProps, iconNodeElementAttrs, mergeClasses } from '@opudoc/opicon-shared';
 import type { IconNode } from './types';
 
-const renderNode = (node: IconNode[number]): ReturnType<typeof h> => {
+const renderNode = (node: IconNode[number], filled: boolean): ReturnType<typeof h> => {
   if (node.length === 3) {
     const [tag, attrs, children] = node;
-    const { key, ...rest } = attrs;
-    return h(tag, { key, ...rest }, children.map(renderNode));
+    const { key, ...rest } = iconNodeElementAttrs(tag, attrs, filled);
+    return h(tag, { key, ...rest }, children.map((child) => renderNode(child, filled)));
   }
   const [tag, attrs] = node;
-  const { key, ...rest } = attrs;
+  const { key, ...rest } = iconNodeElementAttrs(tag, attrs, filled);
   return h(tag, { key, ...rest });
 };
 
@@ -47,7 +47,7 @@ const Icon = defineComponent({
           'aria-hidden': true,
           ...attrs,
         },
-        props.iconNode.map(renderNode),
+        props.iconNode.map((node) => renderNode(node, paint.filled)),
       );
     };
   },
