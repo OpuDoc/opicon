@@ -15,13 +15,13 @@
 </p>
 <p align="center">
   <a href="https://opicon.net">Website</a>
-  ┬À
+  ·
   <a href="https://github.com/OpuDoc/opicon/tree/main/icons">Icons</a>
-  ┬À
+  ·
   <a href="#packages">Packages</a>
-  ┬À
+  ·
   <a href="https://github.com/OpuDoc/opicon/blob/main/LICENSE.md">License</a>
-  ┬À
+  ·
   <a href="https://github.com/OpuDoc/opicon/releases">Releases</a>
 </p>
 
